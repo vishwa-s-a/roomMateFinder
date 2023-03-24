@@ -28,12 +28,15 @@ app.get("/",function(req,res){
     res.render("home");
 });
 
+app.get("/about",function(req,res){
+    res.render("about");
+})
+
 app.get("/:customListName",function(req,res){
     const parameters=req.params.customListName;
     const block=parameters.slice(0,1);
     const program=parameters.slice(1,6);
     const year=parameters.slice(6,7);
-    console.log(year);
     const id=parameters.slice(7);
     Mate.find({block:block,program:program,year:year},function(err,foundLists){
         if(!err){
@@ -66,7 +69,6 @@ app.post("/",function(req,res){
             console.log(err);
         }
         else{
-            console.log(newMate.id);
             res.redirect("/"+query+newMate.id);
         }
     });

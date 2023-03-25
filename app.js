@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose=require("mongoose");
 const PORT=process.env.PORT || 3000;
+require('dotenv').config();
 
 const app = express();
 app.set('view engine', 'ejs');
@@ -9,7 +10,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost:27017/roomMateDB");//extra true thing is for removing deprecation warning
+mongoose.connect(process.env.ATLAS_URL,{useNewUrlParser:true});//extra true thing is for removing deprecation warning
 //creating a new schema
 const mateSchema={
   name:String,
@@ -18,7 +19,8 @@ const mateSchema={
   year:Number,
   block:String,
   phoneNumber:Number,
-  cgpa:Number
+  cgpa:Number,
+  email:String
 };
 
 //creating a model(in db language creating a collection)
@@ -61,7 +63,8 @@ app.post("/",function(req,res){
         year:req.body.year,
         block:req.body.block,
         phoneNumber:req.body.phoneNumber,
-        cgpa:req.body.cgpa
+        cgpa:req.body.cgpa,
+        email:req.body.emailId
     });
     const query=newMate.block+newMate.program+newMate.year;
     newMate.save(function(err){

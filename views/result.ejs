@@ -63,7 +63,7 @@ body{
 }
 
 
-@media(max-width:580px) {
+/* @media(max-width:580px) {
   .row{
     display: block;
     padding: 14px 0 7px;
@@ -90,7 +90,7 @@ body{
     color: #969696;
     display: block;
   }
-}
+} */
 </style>
 <div>
     <p style="color:white">These are your suitable room mates</p>
@@ -102,6 +102,7 @@ body{
         <div class="cell">Program</div>
         <div class="cell">Year</div>
         <div class="cell">CGPA</div>
+        <div class="cell">Email-Id</div>
       </div>
       <% for (var l = result.length, i = 0; i < l; i++) { %>
             <%if(result[i].id === parameter){%>
@@ -112,6 +113,7 @@ body{
                     <div class="cell" data-title="Program"><%=result[i].program%></div>
                     <div class="cell" data-title="Year"><%=result[i].year%></div>
                     <div class="cell" data-title="CGPA"><%=result[i].cgpa%></div>
+                    <div class="cell" data-title="Email-Id"><%=result[i].email%></div>
                   </div>
             <% } %>      
           <% } %>

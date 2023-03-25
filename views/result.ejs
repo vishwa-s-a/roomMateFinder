@@ -61,9 +61,15 @@ body{
   display: table-cell;
   padding: 6px 12px;
 }
-
-
 @media(max-width:580px) {
+  
+  .btn{
+    margin-left: 120px;
+    
+  }
+}
+
+/* @media(max-width:580px) {
   .row{
     display: block;
     padding: 14px 0 7px;
@@ -90,7 +96,7 @@ body{
     color: #969696;
     display: block;
   }
-}
+} */
 </style>
 <div>
     <p style="color:white">These are your suitable room mates</p>
@@ -119,5 +125,7 @@ body{
           <% } %>
     </div>
 </div>
-<button class="button2"><a href="/">Home</a></button>
+<div class="btn">
+  <button class="button2"><a href="/">Home</a></button>
+</div>
 <%- include("footer") -%>

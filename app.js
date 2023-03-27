@@ -53,7 +53,7 @@ app.get("/:customListName", function (req, res) {
             if (foundlist.length !== 0) {
                 Mate.find({ block: block, program: program, year: year }, function (err, foundLists) {
                     if (!err) {
-                        if (foundLists[0]._id === id && foundLists.length === 1) {
+                        if (foundLists[0].id === id && foundLists.length === 1) {
                             res.render("failure", { parameter: "Sorry couldn't find any room mate" });
                         }
                         else {
@@ -83,7 +83,7 @@ app.post("/", function (req, res) {
                 const year = foundList.year;
                 const program = foundList.program;
                 const query = block + program + year + foundList.id;
-                console.log(query);
+                //console.log(query);
                 res.redirect("/" + query);
 
             }
